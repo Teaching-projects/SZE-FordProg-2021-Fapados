@@ -1,0 +1,351 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     value -> NUMBER
+Rule 2     value -> STRING
+Rule 3     value -> BOOLEAN
+Rule 4     value -> NULL
+Rule 5     value -> object
+Rule 6     value -> array
+Rule 7     start -> object
+Rule 8     start -> array
+Rule 9     object -> LBRACE pairs RBRACE
+Rule 10    pairs -> pair
+Rule 11    pairs -> empty
+Rule 12    pair -> STRING COLON value COMMA pair
+Rule 13    pair -> STRING COLON value
+Rule 14    array -> LBRACKET items RBRACKET
+Rule 15    items -> item
+Rule 16    items -> empty
+Rule 17    item -> value COMMA item
+Rule 18    item -> value
+Rule 19    empty -> <empty>
+
+Terminals, with rules where they appear
+
+BOOLEAN              : 3
+COLON                : 12 13
+COMMA                : 12 17
+LBRACE               : 9
+LBRACKET             : 14
+NULL                 : 4
+NUMBER               : 1
+RBRACE               : 9
+RBRACKET             : 14
+STRING               : 2 12 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+array                : 6 8
+empty                : 11 16
+item                 : 15 17
+items                : 14
+object               : 5 7
+pair                 : 10 12
+pairs                : 9
+start                : 0
+value                : 12 13 17 18
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (7) start -> . object
+    (8) start -> . array
+    (9) object -> . LBRACE pairs RBRACE
+    (14) array -> . LBRACKET items RBRACKET
+
+    LBRACE          shift and go to state 4
+    LBRACKET        shift and go to state 5
+
+    start                          shift and go to state 1
+    object                         shift and go to state 2
+    array                          shift and go to state 3
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (7) start -> object .
+
+    $end            reduce using rule 7 (start -> object .)
+
+
+state 3
+
+    (8) start -> array .
+
+    $end            reduce using rule 8 (start -> array .)
+
+
+state 4
+
+    (9) object -> LBRACE . pairs RBRACE
+    (10) pairs -> . pair
+    (11) pairs -> . empty
+    (12) pair -> . STRING COLON value COMMA pair
+    (13) pair -> . STRING COLON value
+    (19) empty -> .
+
+    STRING          shift and go to state 9
+    RBRACE          reduce using rule 19 (empty -> .)
+
+    pairs                          shift and go to state 6
+    pair                           shift and go to state 7
+    empty                          shift and go to state 8
+
+state 5
+
+    (14) array -> LBRACKET . items RBRACKET
+    (15) items -> . item
+    (16) items -> . empty
+    (17) item -> . value COMMA item
+    (18) item -> . value
+    (19) empty -> .
+    (1) value -> . NUMBER
+    (2) value -> . STRING
+    (3) value -> . BOOLEAN
+    (4) value -> . NULL
+    (5) value -> . object
+    (6) value -> . array
+    (9) object -> . LBRACE pairs RBRACE
+    (14) array -> . LBRACKET items RBRACKET
+
+    RBRACKET        reduce using rule 19 (empty -> .)
+    NUMBER          shift and go to state 14
+    STRING          shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    NULL            shift and go to state 17
+    LBRACE          shift and go to state 4
+    LBRACKET        shift and go to state 5
+
+    items                          shift and go to state 10
+    item                           shift and go to state 11
+    empty                          shift and go to state 12
+    value                          shift and go to state 13
+    object                         shift and go to state 18
+    array                          shift and go to state 19
+
+state 6
+
+    (9) object -> LBRACE pairs . RBRACE
+
+    RBRACE          shift and go to state 20
+
+
+state 7
+
+    (10) pairs -> pair .
+
+    RBRACE          reduce using rule 10 (pairs -> pair .)
+
+
+state 8
+
+    (11) pairs -> empty .
+
+    RBRACE          reduce using rule 11 (pairs -> empty .)
+
+
+state 9
+
+    (12) pair -> STRING . COLON value COMMA pair
+    (13) pair -> STRING . COLON value
+
+    COLON           shift and go to state 21
+
+
+state 10
+
+    (14) array -> LBRACKET items . RBRACKET
+
+    RBRACKET        shift and go to state 22
+
+
+state 11
+
+    (15) items -> item .
+
+    RBRACKET        reduce using rule 15 (items -> item .)
+
+
+state 12
+
+    (16) items -> empty .
+
+    RBRACKET        reduce using rule 16 (items -> empty .)
+
+
+state 13
+
+    (17) item -> value . COMMA item
+    (18) item -> value .
+
+    COMMA           shift and go to state 23
+    RBRACKET        reduce using rule 18 (item -> value .)
+
+
+state 14
+
+    (1) value -> NUMBER .
+
+    COMMA           reduce using rule 1 (value -> NUMBER .)
+    RBRACKET        reduce using rule 1 (value -> NUMBER .)
+    RBRACE          reduce using rule 1 (value -> NUMBER .)
+
+
+state 15
+
+    (2) value -> STRING .
+
+    COMMA           reduce using rule 2 (value -> STRING .)
+    RBRACKET        reduce using rule 2 (value -> STRING .)
+    RBRACE          reduce using rule 2 (value -> STRING .)
+
+
+state 16
+
+    (3) value -> BOOLEAN .
+
+    COMMA           reduce using rule 3 (value -> BOOLEAN .)
+    RBRACKET        reduce using rule 3 (value -> BOOLEAN .)
+    RBRACE          reduce using rule 3 (value -> BOOLEAN .)
+
+
+state 17
+
+    (4) value -> NULL .
+
+    COMMA           reduce using rule 4 (value -> NULL .)
+    RBRACKET        reduce using rule 4 (value -> NULL .)
+    RBRACE          reduce using rule 4 (value -> NULL .)
+
+
+state 18
+
+    (5) value -> object .
+
+    COMMA           reduce using rule 5 (value -> object .)
+    RBRACKET        reduce using rule 5 (value -> object .)
+    RBRACE          reduce using rule 5 (value -> object .)
+
+
+state 19
+
+    (6) value -> array .
+
+    COMMA           reduce using rule 6 (value -> array .)
+    RBRACKET        reduce using rule 6 (value -> array .)
+    RBRACE          reduce using rule 6 (value -> array .)
+
+
+state 20
+
+    (9) object -> LBRACE pairs RBRACE .
+
+    $end            reduce using rule 9 (object -> LBRACE pairs RBRACE .)
+    COMMA           reduce using rule 9 (object -> LBRACE pairs RBRACE .)
+    RBRACKET        reduce using rule 9 (object -> LBRACE pairs RBRACE .)
+    RBRACE          reduce using rule 9 (object -> LBRACE pairs RBRACE .)
+
+
+state 21
+
+    (12) pair -> STRING COLON . value COMMA pair
+    (13) pair -> STRING COLON . value
+    (1) value -> . NUMBER
+    (2) value -> . STRING
+    (3) value -> . BOOLEAN
+    (4) value -> . NULL
+    (5) value -> . object
+    (6) value -> . array
+    (9) object -> . LBRACE pairs RBRACE
+    (14) array -> . LBRACKET items RBRACKET
+
+    NUMBER          shift and go to state 14
+    STRING          shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    NULL            shift and go to state 17
+    LBRACE          shift and go to state 4
+    LBRACKET        shift and go to state 5
+
+    value                          shift and go to state 24
+    object                         shift and go to state 18
+    array                          shift and go to state 19
+
+state 22
+
+    (14) array -> LBRACKET items RBRACKET .
+
+    $end            reduce using rule 14 (array -> LBRACKET items RBRACKET .)
+    COMMA           reduce using rule 14 (array -> LBRACKET items RBRACKET .)
+    RBRACKET        reduce using rule 14 (array -> LBRACKET items RBRACKET .)
+    RBRACE          reduce using rule 14 (array -> LBRACKET items RBRACKET .)
+
+
+state 23
+
+    (17) item -> value COMMA . item
+    (17) item -> . value COMMA item
+    (18) item -> . value
+    (1) value -> . NUMBER
+    (2) value -> . STRING
+    (3) value -> . BOOLEAN
+    (4) value -> . NULL
+    (5) value -> . object
+    (6) value -> . array
+    (9) object -> . LBRACE pairs RBRACE
+    (14) array -> . LBRACKET items RBRACKET
+
+    NUMBER          shift and go to state 14
+    STRING          shift and go to state 15
+    BOOLEAN         shift and go to state 16
+    NULL            shift and go to state 17
+    LBRACE          shift and go to state 4
+    LBRACKET        shift and go to state 5
+
+    value                          shift and go to state 13
+    item                           shift and go to state 25
+    object                         shift and go to state 18
+    array                          shift and go to state 19
+
+state 24
+
+    (12) pair -> STRING COLON value . COMMA pair
+    (13) pair -> STRING COLON value .
+
+    COMMA           shift and go to state 26
+    RBRACE          reduce using rule 13 (pair -> STRING COLON value .)
+
+
+state 25
+
+    (17) item -> value COMMA item .
+
+    RBRACKET        reduce using rule 17 (item -> value COMMA item .)
+
+
+state 26
+
+    (12) pair -> STRING COLON value COMMA . pair
+    (12) pair -> . STRING COLON value COMMA pair
+    (13) pair -> . STRING COLON value
+
+    STRING          shift and go to state 9
+
+    pair                           shift and go to state 27
+
+state 27
+
+    (12) pair -> STRING COLON value COMMA pair .
+
+    RBRACE          reduce using rule 12 (pair -> STRING COLON value COMMA pair .)
+
