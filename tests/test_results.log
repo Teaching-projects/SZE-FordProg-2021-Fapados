@@ -1,0 +1,64 @@
+******** Running Tests *********** 
+
+
+------test1.json INPUT------
+{
+  "something": {
+    "foo": [2, 3, 4],
+	"bar": true
+}
+  
+
+
+-------RESULTS------
+You seem to have an unclosed object.
+Invalid JSON.
+
+
+------test2.json INPUT------
+{"nullValue": null,
+"lists": [1, 2, 3, true, false, null],
+"emptyLists": [], "booleanTrue": true, "booleanFalse": false, "emptyObjects": {}}
+
+
+
+-------RESULTS------
+Valid JSON.
+
+------test3.json INPUT------
+{"moreThanOneObjectAllowed":  false}
+{"youWillNeverGetHere": true}
+
+
+-------RESULTS------
+Error on line 2 near position 37 (token: '{').
+Invalid JSON.
+
+
+------test4.json INPUT------
+{"testing": "unclosedString}
+
+
+-------RESULTS------
+Illegal character '"' on line 1 near position 12.
+Invalid JSON.
+
+
+------test5.json INPUT------
+{"testing": ["unclosedArray", 1, 2}
+
+
+-------RESULTS------
+Error on line 1 near position 34 (token: '}').
+Invalid JSON.
+
+
+------test6.json INPUT------
+
+
+
+-------RESULTS------
+There's something wrong...
+Invalid JSON.
+
+
