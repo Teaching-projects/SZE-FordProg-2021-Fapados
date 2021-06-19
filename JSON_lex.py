@@ -102,4 +102,4 @@ class JSONLexer(object):
 if __name__ == "__main__":
     l = JSONLexer()
     l.build()
-    l.test(r'"\u007F"')
+    l.test(r'""')
