@@ -95,5 +95,5 @@ class JSONParser:
 if __name__ == "__main__":
     j = JSONParser()
     j.parse(r"""
-    {,}
+    {}
     """)
