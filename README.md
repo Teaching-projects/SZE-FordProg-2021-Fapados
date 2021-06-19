@@ -3,7 +3,7 @@ Tozser Zoltan
 
 Leírás: 
 
-A tests mappában fájlok vannak, amelyek valid vagy invalid JSON fájlok. A program kiértékeli őket, tehát eldönti, hogy valid vagy invalid és egy összegző fájlt készít (tests_results néven) a tests mappába. 
+A tests mappában fájlok vannak, amelyek valid vagy invalid JSON fájlok. A test.py fájlt futtatva a program kiértékeli a JSON fájlokat, tehát eldönti, hogy valid vagy invalid és egy összegző fájlt készít (tests_results néven) a tests mappába. 
 
 Három fájlból áll a program:lex, parse és a test. 
 
